@@ -8,4 +8,4 @@
 ## Technologies Used:
 - JavaScript
 - Phaser
-- HTML5 
+- HTML5 Canvas

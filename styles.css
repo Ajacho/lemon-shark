@@ -1,0 +1,19 @@
+html{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.welcome-title{
+    font-size: 2.5em;
+    color: rgba(18, 18, 219, 0.653);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.game-script{
+    display: none;
+    border: 10px solid #bb0202;
+}
