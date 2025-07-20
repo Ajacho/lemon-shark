@@ -1,19 +1,67 @@
-html{
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-    text-align: center;
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  text-align: center;
 }
 
-.welcome-title{
-    font-size: 2.5em;
-    color: rgba(18, 18, 219, 0.653);
-    text-align: center;
-    margin-top: 20px;
+.welcome-title {
+  font-size: 2.5em;
+  background: linear-gradient(
+    -45deg,
+    #ff6b6b,
+    #4ecdc4,
+    #45b7d1,
+    #f9ca24,
+    #f0932b,
+    #eb4d4b,
+    #6c5ce7
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 20px;
 }
 
-.game-script{
-    display: none;
-    border: 10px solid #bb0202;
+#game-container {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.animated-border {
+  padding: 10px;
+  background: linear-gradient(
+    -45deg,
+    #ff6b6b,
+    #4ecdc4,
+    #45b7d1,
+    #f9ca24,
+    #f0932b,
+    #eb4d4b,
+    #6c5ce7
+  );
+  background-size: 400% 400%;
+  animation: borderAnimation 3s ease infinite;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 20px auto;
+}
+
+@keyframes borderAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
