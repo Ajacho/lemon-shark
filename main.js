@@ -24,6 +24,7 @@ const config = {
 // Create game variables
 let player;
 let cursors;
+let randomFish;
 
 // Start game
 const game = new Phaser.Game(config);
@@ -32,6 +33,11 @@ const game = new Phaser.Game(config);
 function preload() {
   this.load.image("player", "assets/images/shark_1.png");
   this.load.image("ocean_bg", "assets/images/ocean_bg.png");
+
+
+  // Generate a random fish image from 1 to 6
+  randomFish = Phaser.Math.Between(1,6);
+  this.load.image("big_fish", `assets/images/fish_${randomFish}.png`);
 }
 
 // The game objects are created here. Such as the player, enemies, etc.
@@ -39,12 +45,16 @@ function create() {
   // Create the shark player sprite (X,Y)
   this.player = this.physics.add.image(120, 300, "player").setDepth(1);
 
+  // Set the shark's food
+  this.fish = this.physics.add.image(400, 300, "big_fish").setDepth(1);
+  this.fish.setScale(0.2, 0.2);
+
   // Set bg
   const bg = this.add.image(0, 0, "ocean_bg").setOrigin(0, 0);
-  bg.setDisplaySize(900, 400).setDepth(0);;
+  bg.setDisplaySize(900, 400).setDepth(0);
 
   // Scale the shark if it's too big/small
-  this.player.setScale(0.4);
+  this.player.setScale(0.6);
 
   // Create cursor keys for movement
   this.cursors = this.input.keyboard.createCursorKeys();
