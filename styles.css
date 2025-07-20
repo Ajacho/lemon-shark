@@ -1,9 +1,16 @@
-html {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
   background-color: #ffffff;
   text-align: center;
+  font-family: "VT323", monospace;
+}
+
+.scoreboard {
+  font-weight: bold;
+  font-size: 1.5em;
 }
 
 .welcome-title {
