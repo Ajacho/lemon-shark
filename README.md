@@ -42,7 +42,7 @@
 ## 💡 Notes
 
 - This is a hobby project. Feedback, stars, and suggestions are welcome!
-- **Skill level:** Questionable but enthusiastic.
+- **Artist Skill level:** Questionable, but enthusiastic.
 
 ---
 
