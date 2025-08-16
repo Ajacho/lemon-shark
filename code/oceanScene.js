@@ -71,10 +71,19 @@ export default class OceanScene extends Phaser.Scene {
     const topRightX = topLeftX + this.cameras.main.width;
 
     this.score = 0;
+    this.highScore = 0;
     this.lives = 3;
 
     this.scoreText = this.add
       .text(topLeftX + 10, topLeftY + 10, "Score: 0", {
+        fontSize: "20px",
+        fill: "#000",
+        fontFamily: "'Press Start 2P', monospace",
+      })
+      .setDepth(3);
+
+    this.highScoreText = this.add
+      .text(topLeftX + 325, topLeftY + 10, "High Score: 0", {
         fontSize: "20px",
         fill: "#000",
         fontFamily: "'Press Start 2P', monospace",
@@ -98,6 +107,10 @@ export default class OceanScene extends Phaser.Scene {
       })
       .setOrigin(0.5)
       .setDepth(3);
+
+    // LocalStorage to keep highest score saved
+    this.highScore = localStorage.getItem("highScore") || 0;
+    this.highScoreText.setText(`High Score: ${this.highScore}`);
 
     this.gameInfo = this.add
       .text(
@@ -212,6 +225,12 @@ export default class OceanScene extends Phaser.Scene {
         this.score += 10;
         this.scoreText.setText(`Score: ${this.score}`);
       }
+      // Check if score exceeds high score
+      if (this.score > this.highScore) {
+        this.highScore = this.score;
+        this.highScoreText.setText(`High Score: ${this.highScore}`);
+        localStorage.setItem("highScore", this.highScore);
+      }
     });
 
     // Collision with bombs
@@ -233,7 +252,8 @@ export default class OceanScene extends Phaser.Scene {
         let explosion = this.add
           .image(bomb.x, bomb.y, "explosion")
           .setOrigin(0.5, 0.5)
-          .setScale(0.5);
+          .setScale(0.5)
+          .setDepth(3);
         this.time.delayedCall(500, () => {
           explosion.destroy();
         });
@@ -287,14 +307,5 @@ export default class OceanScene extends Phaser.Scene {
       // bomb.setCollideWorldBounds(true);
       bomb.setDepth(2);
     }
-
-    // // // --- Player collision debug box ---
-    // if (!this.playerDebug) {
-    //     this.playerDebug = this.add.graphics().setDepth(100);
-    // }
-    // this.playerDebug.clear();
-    // this.playerDebug.lineStyle(2, 0xff0000, 1); // Red outline
-    // const bounds = this.player.getBounds();
-    // this.playerDebug.strokeRect(bounds.x, bounds.y, bounds.width, bounds.height);
   }
 }
